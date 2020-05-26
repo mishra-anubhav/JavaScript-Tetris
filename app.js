@@ -100,8 +100,10 @@ function freeze(){
   if(current.some(index =>squares[currentPosition + index + width].classList.contains('taken'))){
     current.forEach(index => squares[currentPosition + index].classList.add('taken'))
     //new tetromino
-    random = nextRandom
+     random = nextRandom
     nextRandom =Math.floor(Math.random()*theTetrominoes.length)
+   
+
     current = theTetrominoes[random][currentRotation]
   currentPosition=4
   draw()
@@ -142,7 +144,7 @@ function rotate(){
   draw()
 }
 //show up-next tetromino in mini-grid
-const displaySquares =document.querySelectorAll('./mini-grid div')
+const displaySquares =document.querySelectorAll('.mini-grid div')
 const displayWidth = 4
 let displayIndex =0
 
@@ -159,7 +161,9 @@ function displayShape(){
   displaySquares.forEach(square => {
     square.classList.remove('tetromino')
   })
-  upNextTetriminoes[nextRandom]
+  upNextTetriminoes[nextRandom].forEach ( index => {
+    displaySquares[displayIndex + index].classList.add('tetromino')
+  })
 }
 
 
